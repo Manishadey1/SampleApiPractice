@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {UsersDataService} from './services/users-data.service'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SampleApi';
+  users : any;
+  constructor(private UserData : UsersDataService) {
+    UserData.users().subscribe((data)=>{
+    console.log('data',data);
+    this.users=data;
+    })
+   }
+
+
+
 }
